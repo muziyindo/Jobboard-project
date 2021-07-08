@@ -1,0 +1,11 @@
+<h3>Home</h3>
+
+{% for job_position in job_positions %}
+
+<p>
+<span><b>Job Title</b> : <i style="color:blue">{{job_position.job_title}}</i></span> 
+<span><b>Job Description</b> : {{job_position.job_description}}</span>
+</p>
+
+
+{% endfor %}

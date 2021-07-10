@@ -1,0 +1,13 @@
+Job App will contain all the views related to Job such as
+Job details page
+Job application page
+Job posting page
+
+
+Account App
+will  handle login and Sign Up for both employers and employee
+
+The landing page view will be in the root/base directory
+
+The template file 'base.html' will also be in the root directory all other inner pages will extends this template except the home/landing page
+

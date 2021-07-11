@@ -3,7 +3,7 @@ from django.contrib.auth.models import User #added this
 
 # Create your models here.
 class Job(models.Model):
-	employer_id = models.ForeignKey(User, on_delete=models.CASCADE,blank=True)
+	employer_id = models.ForeignKey(User, on_delete=models.CASCADE,blank = True, null=True)
 	employer_email = models.CharField(max_length=200)
 	title = models.CharField(max_length=300)
 	location = models.CharField(max_length=200)

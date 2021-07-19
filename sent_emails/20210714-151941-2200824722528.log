@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: muziyindojava@gmail.com
+Date: Wed, 14 Jul 2021 14:19:41 -0000
+Message-ID: 
+ <162627238195.10080.5700084298198458272@SYS-MDauda.netcomafrica.com>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/accounts/reset/MQ/aps7wt-853e46d3d7770d5eec69c286d5d7bf0e/
+
+Your username, in case you’ve forgotten: mueez
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

@@ -10,11 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) old version
+from pathlib import Path
 
+# DAYO GOT -- After Python 3.6 and Django 3.1, it is recommended to use the pathlib library to handle file system paths.
+
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -27,11 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    'emailer',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,13 +72,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Jobboard.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', #added db engine name
+        'ENGINE': 'django.db.backends.postgresql',  # added db engine name
         'NAME': 'jobboard',
         'USER': 'postgres',
         'PASSWORD': '52089900m',
@@ -86,7 +85,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -106,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -120,18 +117,25 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Jobboard/static')
+    BASE_DIR, 'static',
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/' #this can be anytext/name
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
+# STATIC_ROOT = BASE_DIR / 'static'  No need since we have decleard in staticfiles_dirs
+STATIC_URL = '/static/'  # this can be anytext/name
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR,'sent_emails')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Error below made me to set DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+# Job.Job: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.mo
+# dels.AutoField'.
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
